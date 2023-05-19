@@ -18,28 +18,23 @@ print("Tente por letra por letra e caso a letra esteja presente em seus respecti
 print("O usuario tera apenas 5 chances para acertar caso erre todas a praga da morte ira lhe levar")
 
 
-while tentativas <= chance:
-    opcao = int(input("Escolha 1 para chutar e 2 para continuar"))
+while tentativas < chance:
+    opcao = int(input("Escolha 1 para chutar e 2 para continuar "))
+
     if opcao == 1:
         chute = input("Digite o nome que voce acha que é")
         if chute == palavra:
             print("Voce acertou")
             break
         else:
-            print("SE FUDEU")
+            print("vacilou,perdeu tudo")
             break
     else:
-
-
-
         letra = input("\nEscolha uma letra ! ").lower()
-
 
         while letra in letra_escolhida:
             print("Letra ja escolhida, tente novamente !")
             letra = input("\nEscolha uma letra !")
-
-
         letra_escolhida.append(letra)
 
         if letra in palavra.lower():
@@ -52,6 +47,7 @@ while tentativas <= chance:
             print("Cuidado maculado voce perdeu 1 tentativa")
             tentativas = tentativas + 1
 
+
         print("Restam ", chance - tentativas, "tentativas")
         print("Estado atual do nome")
         print(palavra_atual)
@@ -59,14 +55,15 @@ while tentativas <= chance:
         if cc == 0:
             break
 
-        print("As lentras que foram tentadas são:")
-        for item in letra_escolhida:
-            print(item, end=" ")
+        print("\nAs lentras que foram tentadas são:")
+        print(", ".join(letra_escolhida))
 
-        if tentativas == chance:
-            print("Voce morreu")
-        else:
-            print("Parabens maculado voce passou no teste")
+if tentativas == chance:
+    print("Voce morreu")
+
+else:
+    print("Parabens maculado voce passou no teste")
+
 
 print("A palavra era", palavra)
 
